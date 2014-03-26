@@ -42,63 +42,90 @@ PanoramaGL library was the first open source library in the world to see panoram
  
 4. How to import PanoramaGL library?
 ====================================
-a. Download PanoramaGL_0.1.zip or download the source code from repository
-b. If you download the zip file then descompress the file
-c. Copy PanoramaGL folder inside your project folder
-d. Import PanoramaGL folder in your project (You can drag and drop the folder inside XCode)
-f. Import the frameworks:
+- a. Download PanoramaGL_0.1.zip or download the source code from repository
+- b. If you download the zip file then descompress the file
+- c. Copy PanoramaGL folder inside your project folder
+- d. Import PanoramaGL folder in your project (You can drag and drop the folder inside XCode)
+- f. Import the frameworks:
+
     -CoreMotion
+
     -CoreLocation
-    -MobileCoreServices
-    -SystemConfiguration
-    -QuartzCore
-    -OpenGLES
-    -CFNetwork
-    -UIKit
-    -Foundation
-    -CoreGraphics
-g. Import the libraries:
-    -libxml2.dylib
-    -libz.dylib
     
-To import frameworks and libraries you must:
+    -MobileCoreServices
+    
+    -SystemConfiguration
+
+    -QuartzCore
+
+    -OpenGLES
+
+    -CFNetwork
+
+    -UIKit
+
+    -Foundation
+    
+    -CoreGraphics
+- g. Import the libraries:
+-libxml2.dylib
+-libz.dylib
+    
+- To import frameworks and libraries you must:
+
     i. Select you project (select the root)
+
     ii. Go to "TARGETS" and select the project
+
     iii. Select "Build Phases" option
+
     iv. Go to "Link Binary With Libraries" panel
+
     v. Select "+" option
+
     vi. Select frameworks and libraries in the list (Use cmd key for multiple options)
+
     vii. Click on "Add" button
 
 ## 5. How to use PanoramaGL in your app?
 For next example, I have imported a spherical image named pano.jpg in the project.
 
 ### 5.1. With Interface Builder
-a. Create a ViewController
-b. Open ViewController with Interface Builder
-c. Select the View in "Objects" panel
-d. Show "Identity Inspector" (View->Utilities->Show Identity Inspector or Alt+Cmd+5)
-e. Change in "Custom Class" the Class from UIView to PLView
-f. Go to ViewController.h and import PLView.h (eg. #import "PLView.h")
-g. Open ViewController.m, go to viewDidLoad method and put this code:
+- a. Create a ViewController
+- b. Open ViewController with Interface Builder
+- c. Select the View in "Objects" panel
+- d. Show "Identity Inspector" (View->Utilities->Show Identity Inspector or Alt+Cmd+5)
+- e. Change in "Custom Class" the Class from UIView to PLView
+- f. Go to ViewController.h and import PLView.h (eg. #import "PLView.h")
+- g. Open ViewController.m, go to viewDidLoad method and put this code:
+
     PLView *plView = (PLView *)self.view;
+    
     PLSpherical2Panorama *panorama = [PLSpherical2Panorama panorama];
+    
     [panorama setImage:[PLImage imageWithPath:[[NSBundle mainBundle] pathForResource:@"pano" ofType:@"jpg"]]];
+    
     [plView setPanorama:panorama];
 
 ### 5.2. Only with code
-a. Import PLView.h in your class (eg. #import "PLView.h")
-b. Create a variable of type PLView (eg. PLView *plView)
-c. Create the view (eg. plView = [[PLView alloc] initWithFrame:CGRectMake(x,y,w,h)])
-d. Load panorama:
+- a. Import PLView.h in your class (eg. #import "PLView.h")
+- b. Create a variable of type PLView (eg. PLView *plView)
+- c. Create the view (eg. plView = [[PLView alloc] initWithFrame:CGRectMake(x,y,w,h)])
+- d. Load panorama:
+    
     PLView *plView = [[PLView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
+
     PLSpherical2Panorama *panorama = [PLSpherical2Panorama panorama];
+    
     [panorama setImage:[PLImage imageWithPath:[[NSBundle mainBundle] pathForResource:@"pano" ofType:@"jpg"]]];
+    
     [plView setPanorama:panorama];
-e. Add panorama view to the window or view:
+    
+- e. Add panorama view to the window or view:
+
     [window addSubview:plView] or [your_view addSubview:plView]
-f. Release the view
-    [plView release];
+
+- f. Release the view  [plView release];
 
 ## 6. Simple JSON Protocol
 Also, you can use JSON protocol to load panoramas. 
@@ -146,7 +173,7 @@ Note: For this code, I have a file named json.data in my app.
                  "height": 0.08,        //Height
                  "image": "hotspot.png" //Image
                  }
-                 ]
+    ]
 }
 
 ### See:
